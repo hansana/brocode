@@ -43,15 +43,8 @@ class App extends Component {
 
                 <Switch>
                     <Route exact path="/" component={RantList} />
-                    <Route path="/rant" component={RantDetail} />
-
-                    {/* <Route component={NotFoundPage} /> */}
+                    <Route exact path="/rant/:rantId" component={RantDetail} />
                 </Switch>
-
-
-
-
-                {/* <RantList /> */}
         
                 {/* <!-- ======================= -->
                 <!-- End of Rant List Page -->
@@ -60,7 +53,6 @@ class App extends Component {
                 <!-- Start of Rant Details Page-->
                 <!-- ======================= --> */}
 
-                {/* <RantDetail /> */}
         
                 {/* <!-- ======================= -->
                 <!-- End of Rant Details Page--> */}

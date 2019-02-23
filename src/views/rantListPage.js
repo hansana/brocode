@@ -1,64 +1,50 @@
 import React, { Component } from 'react';
+import Rant from '../components/rant.js';
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom';
 
-function RantList(statusId) {
-    return (
+class RantList extends Component {
+
+    render() {
+        const rantListDetails = [
+            {
+                votes: 1,
+                content: "When a hiring manager wants 5+ years experience in Swift.\n\nSwift release date = June 2, 2014\n\n😂👍🖕",
+                id: "DHuQqrjGMKxVW7hjTmhrv8",
+                timestamp: 1550814806819,
+                author: "Ravindu",
+                isMyPost: false,
+                displayTime: "a day ago",
+                myVote: 0,
+                commentCount: 2
+            },
+            {
+                votes: 3,
+                content: "Ravindu drinks 10 beers in every day = June 2, 2014\n\n😂👍🖕",
+                id: "DHuQqrjGMKxVW7hjTmhrv9",
+                timestamp: 1550814806819,
+                author: "Hansana",
+                isMyPost: false,
+                displayTime: "5 min ago",
+                myVote: 0,
+                commentCount: 0
+            }
+        ];
+
+        let rantArrayList = [];
+        for(var i=0; i<rantListDetails.length; i++){
+            rantArrayList.push(<Rant value={ rantListDetails[i] } key={rantListDetails[i].id} />);
+        }
+
+
+        return (
             <div className="post-list">  
-                <Link to="/rant">
-                    <article className="post">
-                        <div className="post__inner">
-                            <div className="score">
-                                <div className="score__up layout--center">++</div>
-                                <div className="score__board layout--center">100</div>
-                                <div className="score__down layout--center">--</div>
-                            </div>
-                            <div className="post__body">
-                                Hello World... 
-                            </div>
-                        </div>
-                        <div className="post__footer">
-                            <div className="post__time">2m ago</div>
-                            <div className="post__comments">
-                                <svg className="icon" viewBox="0 0 31 32">
-                                    <path d="M24.732 24.371v7.629l-7.267-7.267h-8.808c-4.781 
-                                    0-8.657-3.875-8.657-8.657v-7.42c0-4.781 3.876-8.657 
-                                    8.657-8.657h13.604c4.781 0 8.657 3.875 8.657 8.657v7.42c0 
-                                    3.922-2.61 7.23-6.186 8.294z"></path>
-                                </svg>
-                                23
-                            </div>
-                        </div>
-                    </article>
 
-                    <article className="post">
-                        <div className="post__inner">
-                            <div className="score">
-                                <div className="score__up layout--center">++</div>
-                                <div className="score__board layout--center">100</div>
-                                <div className="score__down layout--center">--</div>
-                            </div>
-                            <div className="post__body">
-                                Hello World... 
-                            </div>
-                        </div>
-                        <div className="post__footer">
-                            <div className="post__time">2m ago</div>
-                            <div className="post__comments">
-                                <svg className="icon" viewBox="0 0 31 32">
-                                    <path d="M24.732 24.371v7.629l-7.267-7.267h-8.808c-4.781 
-                                    0-8.657-3.875-8.657-8.657v-7.42c0-4.781 3.876-8.657 
-                                    8.657-8.657h13.604c4.781 0 8.657 3.875 8.657 8.657v7.42c0 
-                                    3.922-2.61 7.23-6.186 8.294z"></path>
-                                </svg>
-                                23
-                            </div>
-                        </div>
-                        </article>
+                {rantArrayList}
 
-                    <div className="rant__add" title="Add Rant">+</div>  
-                </Link>
+                <div className="rant__add" title="Add Rant">+</div>  
             </div>
-    );
+        );
+    }
 }
 
 export default RantList;
