@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 function Header() {
     return (
-        <Router>
         <section className="header layout--center">
         <div className="header__content layout--wrapped">
             <div className="brand">
@@ -26,7 +25,6 @@ function Header() {
             </div>
         </div>
     </section>
-    </Router>
     );
 }
 

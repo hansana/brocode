@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {withRouter} from 'react-router';
 
 function RantDetail(rantId) {
     return (
@@ -78,4 +77,4 @@ function RantDetail(rantId) {
     );
 }
 
-export default withRouter(RantDetail);
+export default RantDetail;
