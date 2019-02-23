@@ -1,11 +1,13 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 function Header() {
     return (
+        <Router>
         <section className="header layout--center">
         <div className="header__content layout--wrapped">
             <div className="brand">
-                <a href="/"><div className="brand__name"><span>#</span>DEVRANT</div></a>
+                <Link to="/"><div className="brand__name"><span>#</span>DEVRANT</div></Link>
             </div>
     
             {/* <!-- User Profile --> */}
@@ -24,6 +26,7 @@ function Header() {
             </div>
         </div>
     </section>
+    </Router>
     );
 }
 
