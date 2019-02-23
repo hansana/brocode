@@ -7,28 +7,28 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-            <div class="page">
+            <div className="page">
         
         {/* <!-- Start of Header -->
         <!-- ======================= --> */}
         
-        <section class="header layout--center">
-            <div class="header__content layout--wrapped">
-                <div class="brand">
-                    <a href="/"><div class="brand__name"><span>#</span>DEVRANT</div></a>
+        <section className="header layout--center">
+            <div className="header__content layout--wrapped">
+                <div className="brand">
+                    <a href="/"><div className="brand__name"><span>#</span>DEVRANT</div></a>
                 </div>
         
                 {/* <!-- User Profile --> */}
-                <div class="profile layout--center">
-                    <div class="profile__picture">
+                <div className="profile layout--center">
+                    <div className="profile__picture">
                         <svg height="36" width="36">
                             <circle cx="18" cy="18" r="18" fill="#5c5f6f"></circle>
                         </svg>
                     </div>
-                    <div class="profile__name">broCode</div>
+                    <div className="profile__name">broCode</div>
                 </div>
         
-                <div class="join">
+                <div className="join">
                     {/* <!-- <span>Join</span> --> */}
                     <span>Sign Out</span>
                 </div>
@@ -41,14 +41,14 @@ class App extends Component {
         <!-- Start of Main Section -->
         <!-- ======================= --> */}
         
-        <section class="main layout--center">
-            <div class="main__content layout--wrapped">
+        <section className="main layout--center">
+            <div className="main__content layout--wrapped">
         
                 {/* <!-- Start of Loader -->                
                 <!-- ======================= --> */}
         {/* 
-                <!-- <div class="loader">
-                  <div class="spinner"></div>
+                <!-- <div className="loader">
+                  <div className="spinner"></div>
                 </div> -->
         
                 <!-- ======================= -->
@@ -58,22 +58,22 @@ class App extends Component {
                 <!-- Start of Rant List Page -->
                 <!-- ======================= --> */}
         
-                <div class="post-list">
+                <div className="post-list">
                     
-                  <article class="post">
-                        <div class="post__inner">
-                            <div class="score">
-                                <div class="score__up layout--center">++</div>
-                                <div class="score__board layout--center">100</div>
-                                <div class="score__down layout--center">--</div>
+                  <article className="post">
+                        <div className="post__inner">
+                            <div className="score">
+                                <div className="score__up layout--center">++</div>
+                                <div className="score__board layout--center">100</div>
+                                <div className="score__down layout--center">--</div>
                             </div>
-                            <div class="post__body">
+                            <div className="post__body">
                                 Hello World... </div>
                         </div>
-                        <div class="post__footer">
-                            <div class="post__time">2m ago</div>
-                            <div class="post__comments">
-                                <svg class="icon" viewBox="0 0 31 32">
+                        <div className="post__footer">
+                            <div className="post__time">2m ago</div>
+                            <div className="post__comments">
+                                <svg className="icon" viewBox="0 0 31 32">
                                     <path d="M24.732 24.371v7.629l-7.267-7.267h-8.808c-4.781 
                                     0-8.657-3.875-8.657-8.657v-7.42c0-4.781 3.876-8.657 
                                     8.657-8.657h13.604c4.781 0 8.657 3.875 8.657 8.657v7.42c0 
@@ -84,7 +84,7 @@ class App extends Component {
                         </div>
                     </article>
                     
-                    <div class="rant__add" title="Add Rant">+</div>        
+                    <div className="rant__add" title="Add Rant">+</div>        
         
                 </div>
         
@@ -95,70 +95,70 @@ class App extends Component {
                 <!-- Start of Rant Details Page-->
                 <!-- ======================= --> */}
         
-                {/* <!-- <div class="rant-details layout--center">
+                {/* <!-- <div className="rant-details layout--center">
         
-                    <section class="post-hero">
-                        <div class="post-hero__inner">
-                            <div class="score">
-                                <div class="score__up layout--center">++</div>
-                                <div class="score__board layout--center">100</div>
-                                <div class="score__down layout--center">--</div>
+                    <section className="post-hero">
+                        <div className="post-hero__inner">
+                            <div className="score">
+                                <div className="score__up layout--center">++</div>
+                                <div className="score__board layout--center">100</div>
+                                <div className="score__down layout--center">--</div>
                             </div>
-                            <div class="post-hero__body">
-                                <div class="profile">
-                                    <div class="profile__picture">
+                            <div className="post-hero__body">
+                                <div className="profile">
+                                    <div className="profile__picture">
                                         <svg height="36" width="36">
                                             <circle cx="18" cy="18" r="18" fill="#5c5f6f" />
                                         </svg>
                                     </div>
-                                    <div class="profile__name">
+                                    <div className="profile__name">
                                         Elon
                                     </div>
                                 </div>
-                                <div class="post__details">
+                                <div className="post__details">
                                     Lorem ipsum                                    
                                 </div>
                             </div>
                         </div>
-                        <div class="post-hero__footer">
-              <div class="post-hero__delete">DELETE</div>
-                            <div class="post-hero__time">2m ago</div>
+                        <div className="post-hero__footer">
+              <div className="post-hero__delete">DELETE</div>
+                            <div className="post-hero__time">2m ago</div>
                         </div>
                     </section>
         
-                    <section class="comments layout--center">
+                    <section className="comments layout--center">
         
-                        <h1 class="comments__title"><span>#</span>Comments</h1>
+                        <h1 className="comments__title"><span>#</span>Comments</h1>
         
-                        <section class="comment">
-                            <div class="comment__inner">
-                                <div class="comment__body">
-                                    <div class="profile">
-                                        <div class="profile__picture">
+                        <section className="comment">
+                            <div className="comment__inner">
+                                <div className="comment__body">
+                                    <div className="profile">
+                                        <div className="profile__picture">
                                             <svg height="36" width="36">
                                                 <circle cx="18" cy="18" r="18" fill="#5c5f6f" />
                                             </svg>
                                         </div>
-                                        <div class="profile__name">
+                                        <div className="profile__name">
                                             Elon
                                         </div>
                                     </div>
-                                    <div class="post__details">
+                                    <div className="post__details">
                                         Lorem ipsum 
                                         <br />
                                     </div>
                                 </div>
                             </div>
-                            <div class="comment__footer">
-                <div class="comment__delete">DELETE</div>
-                                <div class="comment__time">2m ago</div>
+                            <div className="comment__footer">
+                <div className="comment__delete">DELETE</div>
+                                <div className="comment__time">2m ago</div>
                             </div>
                         </section>
         
                     </section>
         
-                    <div class="rant__comment layout--center" title="Comment">
-                        <svg class="icon" viewBox="0 0 31 32" width="100%" height="100%">
+                    <div className="rant__comment layout--center" title="Comment">
+                        <svg className="icon" viewBox="0 0 31 32" width="100%" height="100%">
                             <path d="M24.732 24.371v7.629l-7.267-7.267h-8.808c-4.781 
                             0-8.657-3.875-8.657-8.657v-7.42c0-4.781 3.876-8.657 
                             8.657-8.657h13.604c4.781 0 8.657 3.875 8.657 8.657v7.42c0 
@@ -182,33 +182,33 @@ class App extends Component {
         {/* <!-- Start of login popup -->
         <!-- ======================= --> */}
         
-        {/* <!-- <div class="popup popup--open">
-        <div class="popup__header">
-            <div title="Close" class="close layout--center">
+        {/* <!-- <div className="popup popup--open">
+        <div className="popup__header">
+            <div title="Close" className="close layout--center">
                 X
             </div>
         </div>
-        <div class="popup__body layout--center">
-            <div class="popup__body-inner">
+        <div className="popup__body layout--center">
+            <div className="popup__body-inner">
         
-                <div class="form">
-                    <div class="form__title">
-                        JOIN <span class="highlight">#</span>DEVRANT
+                <div className="form">
+                    <div className="form__title">
+                        JOIN <span className="highlight">#</span>DEVRANT
                     </div>
-                    <div class="form__description">
+                    <div className="form__description">
                         Vote and comment on others' rants. Post your own.
                     </div>
                     <form name="login">
-                        <div class="login">
+                        <div className="login">
         
                             <input type="text" placeholder="USERNAME" />
                             <input type="password" placeholder="PASSWORD" />
         
-                            <div class="loader">
-                                <div class="spinner"></div>
+                            <div className="loader">
+                                <div className="spinner"></div>
                             </div>
         
-                            <div class="form__error">
+                            <div className="form__error">
                                 Some fields are missing !
                             </div>
         
@@ -226,31 +226,31 @@ class App extends Component {
         <!-- Start of post popup -->
         <!-- ======================= --> */}
         
-        {/* <!-- <div class="popup popup--open">
-        <div class="popup__header">
-            <div title="Close" class="close layout--center">
+        {/* <!-- <div className="popup popup--open">
+        <div className="popup__header">
+            <div title="Close" className="close layout--center">
                 X
             </div>
         </div>
-        <div class="popup__body layout--center">
-            <div class="popup__body-inner">
+        <div className="popup__body layout--center">
+            <div className="popup__body-inner">
         
-                <div class="form">
-                    <div class="form__title">
-                        NEW <span class="highlight">#</span>RANT
+                <div className="form">
+                    <div className="form__title">
+                        NEW <span className="highlight">#</span>RANT
                     </div>
-                    <div class="form__description">
+                    <div className="form__description">
                         Express yourself with 140 characters.
                     </div>
                     <form name="new-rant">
-                        <div class="new-rant">
+                        <div className="new-rant">
                             <textarea maxlength="140"></textarea>
         
-                            <div class="loader">
-                                <div class="spinner"></div>
+                            <div className="loader">
+                                <div className="spinner"></div>
                             </div>
         
-                            <div class="form__error">
+                            <div className="form__error">
                                 Some fields are missing !
                             </div>
         
@@ -269,31 +269,31 @@ class App extends Component {
         <!-- Start of comment popup -->
         <!-- ======================= --> */}
         
-        {/* <!-- <div class="popup popup--open">
-        <div class="popup__header">
-            <div title="Close" class="close layout--center">
+        {/* <!-- <div className="popup popup--open">
+        <div className="popup__header">
+            <div title="Close" className="close layout--center">
                 X
             </div>
         </div>
-        <div class="popup__body layout--center">
-            <div class="popup__body-inner">
+        <div className="popup__body layout--center">
+            <div className="popup__body-inner">
         
-                <div class="form">
-                    <div class="form__title">
-                        NEW <span class="highlight">#</span>COMMENT
+                <div className="form">
+                    <div className="form__title">
+                        NEW <span className="highlight">#</span>COMMENT
                     </div>
-                    <div class="form__description">
+                    <div className="form__description">
                         Comment with 140 characters.
                     </div>
                     <form name="new-comment">
-                        <div class="new-comment">
+                        <div className="new-comment">
                             <textarea maxlength="140"></textarea>
         
-                            <div class="loader">
-                                <div class="spinner"></div>
+                            <div className="loader">
+                                <div className="spinner"></div>
                             </div>
         
-                            <div class="form__error">
+                            <div className="form__error">
                                 Some fields are missing !
                             </div>
         
@@ -312,24 +312,24 @@ class App extends Component {
         <!-- Start of alert popup -->
         <!-- ======================= --> */}
         
-        {/* <!-- <div class="popup popup--open">
-        <div class="popup__header">
-            <div title="Close" class="close layout--center">
+        {/* <!-- <div className="popup popup--open">
+        <div className="popup__header">
+            <div title="Close" className="close layout--center">
                 X
             </div>
         </div>
-        <div class="popup__body layout--center">
-            <div class="popup__body-inner">
+        <div className="popup__body layout--center">
+            <div className="popup__body-inner">
         
-                <div class="form">
-                    <div class="form__title">
-                        <span class="highlight">#</span>OOPS!
+                <div className="form">
+                    <div className="form__title">
+                        <span className="highlight">#</span>OOPS!
                     </div>
-                    <div class="form__description">
+                    <div className="form__description">
                         You can not vote on your own post :)
                     </div>
                     <form name="alert">
-                        <div class="alert">
+                        <div className="alert">
                             <input type="submit" value="OK" />
                         </div>
                     </form>
