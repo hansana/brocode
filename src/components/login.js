@@ -7,6 +7,11 @@ class Login extends Component {
         this.state = {
             showLogin: this.props.showLogin
         };
+        this.textInput = React.createRef();
+    }
+
+    componentDidUpdate() {
+        this.textInput.current.focus();
     }
 
     render () {
@@ -35,7 +40,7 @@ class Login extends Component {
                                 <form name="login">
                                     <div className="login">
                     
-                                        <input type="text" placeholder="USERNAME" />
+                                        <input type="text" placeholder="USERNAME" ref={this.textInput}/>
                                         <input type="password" placeholder="PASSWORD" />
                     
                                         <div className="loader">
