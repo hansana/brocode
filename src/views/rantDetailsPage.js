@@ -13,7 +13,7 @@ class RantDetail extends Component {
                 id: "Kt3T2jXXi6XofMTGUArzrt",
                 timestamp: 1549434720221,
                 author: "thusitha",
-                isMyPost: false,
+                isMyPost: true,
                 displayTime: "17 days ago",
                 myVote: 0,
                 comments: [
@@ -74,7 +74,7 @@ class RantDetail extends Component {
                     </div>
                 </div>
                 <div className="post-hero__footer">
-                    <div className="post-hero__delete">DELETE</div>
+                    {postDetials.post.isMyPost && <div className="post-hero__delete">DELETE</div>}
                     <div className="post-hero__time">{postDetials.displayTime}</div>
                 </div>
             </section>

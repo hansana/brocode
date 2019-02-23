@@ -1,48 +1,63 @@
 import React, { Component } from 'react';
 import Rant from '../components/rant.js';
-import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom';
+import AxiosService from '../services/axiosService.js';
+import axios from 'axios';
 
 class RantList extends Component {
+    state = {
+        rantListDetails: [],
+        isLoading: true,
+        errors: null
+      };
+
+    componentDidMount() {
+        AxiosService.getRequest({
+            url: 'https://api.devrant.thusitha.site/v1/post.list',
+            method:'get'
+            // data: {
+
+            // }
+        }).then(data => {
+            this.setState({
+                rantListDetails: data
+            });
+            this.details = data;
+        }).catch(err => {
+            console.log(err);
+        });
+
+
+        // axios.get('https://api.devrant.thusitha.site/v1/post.list')
+        // .then(response => {
+        //     this.setState({
+        //         rantListDetails: response.data
+        //     });
+        // })
+        // .catch(function (error) {
+        //     console.log(error);
+        // });
+
+    }
 
     render() {
-        const rantListDetails = [
-            {
-                votes: 1,
-                content: "When a hiring manager wants 5+ years experience in Swift.\n\nSwift release date = June 2, 2014\n\n😂👍🖕",
-                id: "DHuQqrjGMKxVW7hjTmhrv8",
-                timestamp: 1550814806819,
-                author: "Ravindu",
-                isMyPost: false,
-                displayTime: "a day ago",
-                myVote: 0,
-                commentCount: 2
-            },
-            {
-                votes: 3,
-                content: "Ravindu drinks 10 beers in every day = June 2, 2014\n\n😂👍🖕",
-                id: "DHuQqrjGMKxVW7hjTmhrv9",
-                timestamp: 1550814806819,
-                author: "Hansana",
-                isMyPost: false,
-                displayTime: "5 min ago",
-                myVote: 0,
-                commentCount: 0
-            }
-        ];
+        const { isLoading, rantListDetails } = this.state;
 
         let rantArrayList = [];
-        for(var i=0; i<rantListDetails.length; i++){
-            rantArrayList.push(
-                <Rant
-                    value={ rantListDetails[i] }
-                    key={rantListDetails[i].id} 
-                />
-            );
+        if (rantListDetails.length != 0) {
+            let rantListDetailsA = rantListDetails.posts;
+            for(var i=0; i<rantListDetailsA.length; i++){
+                rantArrayList.push(
+                    <Rant
+                        value={ rantListDetailsA[i] }
+                        key={rantListDetailsA[i].id} 
+                    />
+                );
+            }
         }
 
 
         return (
-            <div className="post-list">  
+            <div className="post-list">
 
                 {rantArrayList}
 

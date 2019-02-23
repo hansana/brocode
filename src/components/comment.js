@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+// import AxiosService from 'services/axiosService.js';
 
-class Comment extends Component {
-    
+class Comment extends Component {    
     render() {
+        // let posts = await AxiosService.getRequest('post.list');
 
         return (
             <section className="comment">
@@ -25,7 +26,7 @@ class Comment extends Component {
                     </div>
                 </div>
                 <div className="comment__footer">
-                    <div className="comment__delete">DELETE</div>
+                    {this.props.value.isMyComment && <div className="comment__delete">DELETE</div>}
                     <div className="comment__time">{this.props.value.displayTime}</div>
                 </div>
             </section>
