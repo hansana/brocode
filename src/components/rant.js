@@ -9,7 +9,7 @@ class Rant extends Component {
                 <article className="post">
                     <div className="post__inner">
                         <div className="score">
-                            <div className="score__up layout--center">++</div>
+                            <div className="score__up layout--center checked">++</div>
                             <div className="score__board layout--center">{this.props.value.votes}</div>
                             <div className="score__down layout--center">--</div>
                         </div>

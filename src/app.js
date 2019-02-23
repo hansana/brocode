@@ -4,6 +4,7 @@ import Header from './components/header.js';
 import Loader from './components/loader.js';
 import RantList from './views/rantListPage.js';
 import RantDetail from './views/rantDetailsPage.js';
+import Rant from './components/rant.js';
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom';
 // import { Route, Redirect, Router, Switch } from 'react-router-dom'; 
 
@@ -33,7 +34,7 @@ class App extends Component {
         
                 {/* <!-- Start of Loader -->                
                 <!-- ======================= --> */}
-                <Loader isLoading={true} />
+                <Loader isLoading={false} />
                 {/* <!-- ======================= -->
                 <!-- End of loader --> */}
         

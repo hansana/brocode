@@ -32,7 +32,12 @@ class RantList extends Component {
 
         let rantArrayList = [];
         for(var i=0; i<rantListDetails.length; i++){
-            rantArrayList.push(<Rant value={ rantListDetails[i] } key={rantListDetails[i].id} />);
+            rantArrayList.push(
+                <Rant
+                    value={ rantListDetails[i] }
+                    key={rantListDetails[i].id} 
+                />
+            );
         }
 
 
