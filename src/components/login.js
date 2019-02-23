@@ -55,7 +55,6 @@ class Login extends Component {
     }
 
     handleSubmit = event => {
-        console.log(this.state);
         event.preventDefault();
       
         const { formData, errors } = this.state;
@@ -91,11 +90,9 @@ class Login extends Component {
             passwordRequired: false,
             usernameRequired: false
         })
-        console.log(this.state);
     }
 
     render () {
-        console.log(this.state.formData.password);
         let open = "";
         const { showLogin, showHideLogin } = this.props;
         if (showLogin) { 

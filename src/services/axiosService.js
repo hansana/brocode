@@ -9,7 +9,7 @@ var errros = {
 
 export default class AxiosService {
 
-  static getRequest(data) {
+  static devRantRequest(data) {
     return new Promise((resolve, reject) => {
 
       // if(isLogged){
@@ -17,6 +17,9 @@ export default class AxiosService {
       //     'X-token' : getToken()
       //   }
       // }
+      data.headers = {
+        'X-token' : 'GoKqpv5GudxcVojnyK83wr'
+      }
 
       axios(data)
         .then(response => {

@@ -7,7 +7,6 @@ import RantList from './views/rantListPage.js';
 import RantDetail from './views/rantDetailsPage.js';
 import Rant from './components/rant.js';
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom';
-// import { Route, Redirect, Router, Switch } from 'react-router-dom'; 
 
 import "./styles.css";
 
@@ -15,17 +14,24 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          isLoading: false,
+          isLoading: true,
           isLogged: false,
           showLogin: false
         };
 
-        this.showHideLogin = this.showHideLogin.bind(this)
+        this.showHideLogin = this.showHideLogin.bind(this);
+        this.showMainLoader = this.showMainLoader.bind(this);
     }
 
     showHideLogin(show) {
         this.setState({
             showLogin: show
+          });
+    }
+
+    showMainLoader(show) {
+        this.setState({
+            isLoading: show
           });
     }
 
@@ -37,10 +43,9 @@ class App extends Component {
         
         {/* <!-- Start of Header -->
         <!-- ======================= --> */}
-            <Header isLogged={this.state.isLogged} showHideLogin={this.showHideLogin}/>
-        
 
-        
+            <Header isLogged={this.state.isLogged} showHideLogin={this.showHideLogin}/>
+
         {/* <!-- ======================= -->
         <!-- End of Header -->
         
@@ -61,20 +66,9 @@ class App extends Component {
                 <!-- ======================= --> */}
 
                 <Switch>
-                    <Route exact path="/" component={RantList} />
+                    <Route exact path="/" render={(props) => <RantList showMainLoader={this.showMainLoader}/>}/>
                     <Route exact path="/rant/:rantId" component={RantDetail} />
                 </Switch>
-        
-                {/* <!-- ======================= -->
-                <!-- End of Rant List Page -->
-        
-        
-                <!-- Start of Rant Details Page-->
-                <!-- ======================= --> */}
-
-        
-                {/* <!-- ======================= -->
-                <!-- End of Rant Details Page--> */}
         
             </div>
         </section>
@@ -91,49 +85,6 @@ class App extends Component {
         
         {/* <!-- ======================= -->
         <!-- End of login popup -->
-        
-        <!-- Start of post popup -->
-        <!-- ======================= --> */}
-        
-        {/* <!-- <div className="popup popup--open">
-        <div className="popup__header">
-            <div title="Close" className="close layout--center">
-                X
-            </div>
-        </div>
-        <div className="popup__body layout--center">
-            <div className="popup__body-inner">
-        
-                <div className="form">
-                    <div className="form__title">
-                        NEW <span className="highlight">#</span>RANT
-                    </div>
-                    <div className="form__description">
-                        Express yourself with 140 characters.
-                    </div>
-                    <form name="new-rant">
-                        <div className="new-rant">
-                            <textarea maxlength="140"></textarea>
-        
-                            <div className="loader">
-                                <div className="spinner"></div>
-                            </div>
-        
-                            <div className="form__error">
-                                Some fields are missing !
-                            </div>
-        
-                            <input type="submit" value="POST">
-                        </div>
-                    </form>
-                </div>
-        
-            </div>
-        </div>
-        </div> --> */}
-        
-        {/* <!-- ======================= -->
-        <!-- End of post popup -->
         
         <!-- Start of comment popup -->
         <!-- ======================= --> */}
