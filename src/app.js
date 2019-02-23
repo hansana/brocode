@@ -15,8 +15,17 @@ class App extends Component {
         super(props);
         this.state = {
           isLoading: false,
-          isLogged: true
+          isLogged: false,
+          showLogin: false
         };
+
+        this.showLogin = this.showLogin.bind(this)
+    }
+
+    showLogin() {
+        this.setState({
+            showLogin: true
+          });
     }
 
     render() {
@@ -27,7 +36,7 @@ class App extends Component {
         
         {/* <!-- Start of Header -->
         <!-- ======================= --> */}
-            <Header />
+            <Header isLogged={this.state.isLogged} showLogin={this.showLogin}/>
         
 
         
@@ -85,7 +94,7 @@ class App extends Component {
         {/* <!-- Start of login popup -->
         <!-- ======================= --> */}
         
-        <Login isLogged={this.state.isLogged}/>
+        <Login showLogin={this.state.showLogin}/>
         
         {/* <!-- ======================= -->
         <!-- End of login popup -->

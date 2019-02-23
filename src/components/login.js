@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 
 class Login extends Component {
     
-
     render () {
-
         let open = "";
-        if (!this.props.isLogged) { 
+        if (this.props.showLogin) { 
             open = "popup--open";
         }// Show this only when the user is logged in
             return (
