@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Rant from '../components/rant.js';
 import AxiosService from '../services/axiosService.js';
-import axios from 'axios';
 
 class RantList extends Component {
     state = {
@@ -14,9 +13,6 @@ class RantList extends Component {
         AxiosService.getRequest({
             url: 'https://api.devrant.thusitha.site/v1/post.list',
             method:'get'
-            // data: {
-
-            // }
         }).then(data => {
             this.setState({
                 rantListDetails: data

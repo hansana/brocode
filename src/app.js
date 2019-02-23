@@ -7,7 +7,8 @@ import RantList from './views/rantListPage.js';
 import RantDetail from './views/rantDetailsPage.js';
 import Rant from './components/rant.js';
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom';
-// import { Route, Redirect, Router, Switch } from 'react-router-dom'; 
+import LoginService from './services/loginService.js';
+import AxiosService from './services/axiosService.js';
 
 import "./styles.css";
 
@@ -16,17 +17,43 @@ class App extends Component {
         super(props);
         this.state = {
           isLoading: false,
-          isLogged: false,
+          isLogged: LoginService.isLoggedIn(),
           showLogin: false
         };
 
         this.showHideLogin = this.showHideLogin.bind(this)
     }
 
-    showHideLogin(show) {
+    showHideLogin = (show) => {
         this.setState({
-            showLogin: show
+            showLogin: show,
+            isLogged: LoginService.isLoggedIn()
           });
+    }
+
+    signOut = () => {
+        //show loader
+        this.showHideLoader(true);
+
+        AxiosService.getRequest({
+            url: 'https://api.devrant.thusitha.site/v1/user.deactivate',
+            method:'post'
+        }).then(data => {
+            LoginService.clearUserData();
+            this.setState({
+                isLogged: LoginService.isLoggedIn()
+            });
+            //hide loader
+            this.showHideLoader(false);
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+
+    showHideLoader = (show) => {
+        this.setState({
+            isLoading: show
+        });
     }
 
     render() {
@@ -37,7 +64,7 @@ class App extends Component {
         
         {/* <!-- Start of Header -->
         <!-- ======================= --> */}
-            <Header isLogged={this.state.isLogged} showHideLogin={this.showHideLogin}/>
+            <Header isLogged={this.state.isLogged} showHideLogin={this.showHideLogin} signOut={this.signOut}/>
         
 
         

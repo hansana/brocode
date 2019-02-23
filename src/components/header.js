@@ -1,9 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import LoginService from '../services/loginService.js';
 
 function Header(props) {
 
-    const { isLogged, showHideLogin } = props;
+    const { isLogged, showHideLogin, signOut } = props;
+    const username = LoginService.getUserName();
 
     if (isLogged) {
         return (
@@ -20,12 +22,12 @@ function Header(props) {
                             <circle cx="18" cy="18" r="18" fill="#5c5f6f"></circle>
                         </svg>
                     </div>
-                    <div className="profile__name">broCode</div>
+                    <div className="profile__name">{username}</div>
                 </div>
         
                 <div className="join">
                     {/* <!-- <span>Join</span> --> */}
-                    <span>Sign Out</span>
+                    <span onClick={() => signOut()} >Sign Out</span>
                 </div>
             </div>
         </section>
