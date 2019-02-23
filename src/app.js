@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import Header from './components/header.js';
+import Loader from './components/loader.js';
 
 import "./styles.css";
 
@@ -27,16 +28,13 @@ class App extends Component {
         
                 {/* <!-- Start of Loader -->                
                 <!-- ======================= --> */}
-        {/* 
-                <!-- <div className="loader">
-                  <div className="spinner"></div>
-                </div> -->
-        
-                <!-- ======================= -->
-                <!-- End of loader -->
+
+                    <Loader />
+                {/* <!-- ======================= -->
+                <!-- End of loader --> */}
         
         
-                <!-- Start of Rant List Page -->
+              {/*   <!-- Start of Rant List Page -->
                 <!-- ======================= --> */}
         
                 <div className="post-list">

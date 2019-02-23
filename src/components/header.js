@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Header(statusId) {
+function Header() {
     return (
         <section className="header layout--center">
         <div className="header__content layout--wrapped">
