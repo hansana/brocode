@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Loader from './loader';
+import AxiosService from '../services/axiosService.js';
+import LoginService from '../services/loginService.js';
 
 class Login extends Component {
     
@@ -56,6 +58,9 @@ class Login extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
+
+        //showing the loader
+        this.showHideLoader(true);
       
         const { formData, errors } = this.state;
         const { username, password } = formData;
@@ -74,10 +79,28 @@ class Login extends Component {
 
         if (username == '') {
             this.textInput.current.focus();
+            return;
         } else if (password == '') {
             this.passwordInput.current.focus();
+            return;
         }
+
         const creds = {username, password}
+
+        if (creds) {
+            AxiosService.devRantRequest({
+                url: 'https://api.devrant.thusitha.site/v1/user.activate',
+                method:'post',
+                data: creds
+            }).then(data => {
+                LoginService.addLoginDetails(data);
+                this.props.showHideLogin(false);
+                //hiding the loader
+                this.showHideLoader(false);
+            }).catch(err => {
+                console.log(err);
+            });
+        }
     }
 
     resetForm () {
@@ -92,9 +115,16 @@ class Login extends Component {
         })
     }
 
+    showHideLoader = (show) => {
+        this.setState({
+            isLoading: show
+        });
+    }
+
     render () {
         let open = "";
         const { showLogin, showHideLogin } = this.props;
+        let { isLoading } = this.state;
         if (showLogin) { 
             open = "popup--open";
         }// Show this only when the user is logged in
@@ -124,6 +154,7 @@ class Login extends Component {
                                             placeholder="USERNAME" 
                                             ref={this.textInput}
                                             onChange={ this.handleChange }
+                                            className={isLoading ? "hide" : ""}
                                         />
                                         <input 
                                             type="password" 
@@ -131,6 +162,7 @@ class Login extends Component {
                                             name="password"
                                             ref={this.passwordInput}
                                             onChange={ this.handleChange }
+                                            className={isLoading ? "hide" : ""}
                                         />
                     
                                         <Loader isLoading={ this.state.isLoading }/>
@@ -141,7 +173,12 @@ class Login extends Component {
                                             {this.state.passwordRequired ? "Password is required" : "" }
                                         </div>
                     
-                                        <input type="submit" value="LET ME IN" onClick={ this.handleSubmit } />
+                                        <input 
+                                            type="submit" 
+                                            value="LET ME IN" 
+                                            onClick={ this.handleSubmit }
+                                            disabled={isLoading}
+                                        />
                                     </div>
                                 </form>
                             </div>

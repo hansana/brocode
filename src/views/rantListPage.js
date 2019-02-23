@@ -27,12 +27,10 @@ class RantList extends Component {
             url: 'https://api.devrant.thusitha.site/v1/post.list',
             method:'get'
         }).then(data => {
-            console.log(this.props);
             this.props.showMainLoader(false);
             this.setState({
                 rantListDetails: data
             });
-            this.details = data;
         }).catch(err => {
             console.log(err);
         });

@@ -55,7 +55,6 @@ class RantDetail extends Component {
                 postId: this.props.match.params.rantId
             }
         }).then(data => {
-            this.props.showMainLoader(false);
             this.setState({
                 postDetials: data,
                 isLoading: false

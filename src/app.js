@@ -5,8 +5,9 @@ import Loader from './components/loader.js';
 import Login from './components/login.js';
 import RantList from './views/rantListPage.js';
 import RantDetail from './views/rantDetailsPage.js';
-import Rant from './components/rant.js';
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom';
+import LoginService from './services/loginService.js';
+import AxiosService from './services/axiosService.js';
 
 import "./styles.css";
 
@@ -15,7 +16,7 @@ class App extends Component {
         super(props);
         this.state = {
           isLoading: true,
-          isLogged: false,
+          isLogged: LoginService.isLoggedIn(),
           showLogin: false
         };
 
@@ -23,16 +24,43 @@ class App extends Component {
         this.showMainLoader = this.showMainLoader.bind(this);
     }
 
-    showHideLogin(show) {
+    showHideLogin = (show) => {
         this.setState({
-            showLogin: show
+            showLogin: show,
+            isLogged: LoginService.isLoggedIn()
           });
     }
+
 
     showMainLoader(show) {
         this.setState({
             isLoading: show
           });
+        }
+
+    signOut = () => {
+        //show loader
+        this.showHideLoader(true);
+
+        AxiosService.devRantRequest({
+            url: 'https://api.devrant.thusitha.site/v1/user.deactivate',
+            method:'post'
+        }).then(data => {
+            LoginService.clearUserData();
+            this.setState({
+                isLogged: LoginService.isLoggedIn()
+            });
+            //hide loader
+            this.showHideLoader(false);
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+
+    showHideLoader = (show) => {
+        this.setState({
+            isLoading: show
+        });
     }
 
     render() {
@@ -43,8 +71,7 @@ class App extends Component {
         
         {/* <!-- Start of Header -->
         <!-- ======================= --> */}
-
-            <Header isLogged={this.state.isLogged} showHideLogin={this.showHideLogin}/>
+            <Header isLogged={this.state.isLogged} showHideLogin={this.showHideLogin} signOut={this.signOut}/>
 
         {/* <!-- ======================= -->
         <!-- End of Header -->
