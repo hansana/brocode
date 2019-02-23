@@ -19,12 +19,12 @@ class App extends Component {
           showLogin: false
         };
 
-        this.showLogin = this.showLogin.bind(this)
+        this.showHideLogin = this.showHideLogin.bind(this)
     }
 
-    showLogin() {
+    showHideLogin(show) {
         this.setState({
-            showLogin: true
+            showLogin: show
           });
     }
 
@@ -36,7 +36,7 @@ class App extends Component {
         
         {/* <!-- Start of Header -->
         <!-- ======================= --> */}
-            <Header isLogged={this.state.isLogged} showLogin={this.showLogin}/>
+            <Header isLogged={this.state.isLogged} showHideLogin={this.showHideLogin}/>
         
 
         
@@ -94,7 +94,7 @@ class App extends Component {
         {/* <!-- Start of login popup -->
         <!-- ======================= --> */}
         
-        <Login showLogin={this.state.showLogin}/>
+        <Login showLogin={this.state.showLogin} showHideLogin={this.showHideLogin}/>
         
         {/* <!-- ======================= -->
         <!-- End of login popup -->

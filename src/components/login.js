@@ -2,15 +2,23 @@ import React, { Component } from 'react';
 
 class Login extends Component {
     
+    constructor(props) {
+        super(props);
+        this.state = {
+            showLogin: this.props.showLogin
+        };
+    }
+
     render () {
         let open = "";
-        if (this.props.showLogin) { 
+        const { showLogin, showHideLogin } = this.props;
+        if (showLogin) { 
             open = "popup--open";
         }// Show this only when the user is logged in
             return (
                 <div className={"popup " + open}>
                     <div className="popup__header">
-                        <div title="Close" className="close layout--center">
+                        <div title="Close" className="close layout--center" onClick={() => showHideLogin(false)}>
                             X
                         </div>
                     </div>

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 function Header(props) {
 
-    const { isLogged, showLogin } = props;
+    const { isLogged, showHideLogin } = props;
 
     if (isLogged) {
         return (
@@ -39,7 +39,7 @@ function Header(props) {
                 </div>
                 
                 <div className="join">
-                    <span onClick={() => showLogin()}>JOIN</span>
+                    <span onClick={() => showHideLogin(true)}>JOIN</span>
                 </div>
             </div>
         </section>
