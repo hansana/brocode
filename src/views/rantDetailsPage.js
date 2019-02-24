@@ -148,21 +148,19 @@ class RantDetail extends Component {
                     <div className="post-hero__body">
                         <div className="profile">
                             <div className="profile__picture">
-                                {postDetials.length != 0 && postDetials.post.author &&
-                                    <CellGrid username={postDetials.post.author}/>
-                                }
+                                <CellGrid username={postDetials.post.author}/>
                             </div>
                             <div className="profile__name">
-                                {postDetials.length != 0 && postDetials.post.author}
+                                {postDetials.post.author}
                             </div>
                         </div>
                         <div className="post__details">
-                            {postDetials.length != 0 && postDetials.post.content}                                   
+                            {postDetials.post.content}                                   
                         </div>
                     </div>
                 </div>
                 <div className="post-hero__footer">
-                    {postDetials.length != 0 && postDetials.post.isMyPost && <div className="post-hero__delete" onClick={this.deletePost}>DELETE</div>}
+                    {postDetials.post.isMyPost && <div className="post-hero__delete" onClick={this.deletePost}>DELETE</div>}
                     <div className="post-hero__time">{postDetials.length != 0 && postDetials.displayTime}</div>
                 </div>
             </section>
