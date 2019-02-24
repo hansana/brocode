@@ -51,6 +51,7 @@ class App extends Component {
                 isLogged: LoginService.isLoggedIn()
             });
             //hide loader
+            window.location.reload();
             this.showHideLoader(false);
         }).catch(err => {
             console.log(err);
