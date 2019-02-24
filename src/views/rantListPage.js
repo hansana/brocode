@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Rant from '../components/rant.js';
 import PostPopUp from '../components/postPopUp.js';
 import AxiosService from '../services/axiosService.js';
+import LoginService from '../services/loginService.js';
 
 class RantList extends Component {
     constructor(props) {
@@ -17,9 +18,13 @@ class RantList extends Component {
     }
     
     showPostAddPopUp(show) {
-        this.setState({
-            showAddPost: show
-        });
+        if (LoginService.isLoggedIn()){
+            this.setState({
+                showAddPost: show
+            });
+        } else {
+            this.props.showHideLogin(true);
+        }
     }
 
     componentDidMount() {
@@ -47,6 +52,7 @@ class RantList extends Component {
                     <Rant
                         value={ rantListDetailsA[i] }
                         key={rantListDetailsA[i].id} 
+                        showHideLogin={this.props.showHideLogin}
                     />
                 );
             }

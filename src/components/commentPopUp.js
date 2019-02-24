@@ -1,12 +1,61 @@
 import React, { Component } from 'react';
 import Loader from './loader';
+import AxiosService from '../services/axiosService.js';
 
 class CommentPopUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: false
+            isLoading: false,
+            commentData: '',
+            isFieldDataMissing: false
         };
+        this.textInput = React.createRef();
+    }
+
+    submitPost = event => {
+        event.preventDefault();
+        this.setState({
+            isLoading: true
+        });
+
+        if (this.state.commentData !== "") {
+            AxiosService.devRantRequest({
+                url: 'https://api.devrant.thusitha.site/v1/comment.add',
+                method:'post',
+                data: {
+                    postId: this.props.postId,
+                    comment: this.state.commentData
+                }
+            }).then(data => {
+                if (data.ok) {
+                    window.location.reload();
+                }
+            }).catch(err => {
+                console.log(err);
+            });
+        } else {
+            this.setState({
+                isLoading: false,
+                isFieldDataMissing: true
+            });
+        }
+    }
+
+    handleChange = event => {      
+        this.setState({
+            commentData: event.target.value
+        });
+
+        if (this.state.commentData !== "") {
+            this.setState({
+                isFieldDataMissing: false
+            });
+        }
+    }
+    
+    componentDidUpdate() {
+        this.textInput.current.focus();
     }
 
     render() {
@@ -35,15 +84,19 @@ class CommentPopUp extends Component {
                             </div>
                             <form name="new-comment">
                                 <div className="new-comment">
-                                    <textarea maxLength="140"></textarea>
+                                    <textarea 
+                                        maxLength="140"
+                                        ref={this.textInput}
+                                        onChange={ this.handleChange }>
+                                    </textarea>
                 
                                     <Loader isLoading={ this.state.isLoading }/>
                 
                                     <div className="form__error">
-                                        Some fields are missing !
+                                        {this.state.isFieldDataMissing ? 'Some fields are missing !' : ''}
                                     </div>
                 
-                                    <input type="submit" value="COMMENT"/>
+                                    <input type="submit" value="COMMENT" onClick={ this.submitPost }/>
                                 </div>
                             </form>
                         </div>
