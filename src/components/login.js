@@ -123,7 +123,6 @@ class Login extends Component {
     }
 
     render () {
-        console.log(this.state.formData.password);
         let open = "";
         const { showLogin, showHideLogin } = this.props;
         let { isLoading } = this.state;
