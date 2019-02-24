@@ -10,6 +10,8 @@ class PostPopUp extends Component {
             rantData: '',
             isFieldDataMissing: false
         };
+        
+        this.textInput = React.createRef();
     }
 
     submitPost = event => {
@@ -18,7 +20,7 @@ class PostPopUp extends Component {
             isLoading: true
         });
 
-        if (this.state.rantData !== undefined) {
+        if (this.state.rantData !== "") {
             AxiosService.devRantRequest({
                 url: 'https://api.devrant.thusitha.site/v1/post.add',
                 method:'post',
@@ -52,6 +54,10 @@ class PostPopUp extends Component {
         }
     }
 
+    componentDidUpdate() {
+        this.textInput.current.focus();
+    }
+
     render() {
         const { showAddPost, showPostAddPopUp } = this.props;
         let open = "";
@@ -80,6 +86,7 @@ class PostPopUp extends Component {
                                 <div className="new-rant">
                                     <textarea
                                         maxLength="140" 
+                                        ref={this.textInput}
                                         onChange={ this.handleChange }>
                                     </textarea>
                 

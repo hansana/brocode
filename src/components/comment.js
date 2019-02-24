@@ -1,6 +1,23 @@
 import React, { Component } from 'react';
+import AxiosService from '../services/axiosService.js';
 
-class Comment extends Component {    
+class Comment extends Component {
+    deleteComment = event => {
+        AxiosService.devRantRequest({
+            url: 'https://api.devrant.thusitha.site/v1/comment.delete',
+            method:'delete',
+            data: {
+                postId: this.props.postId,
+                commentId: this.props.value.id
+            }
+        }).then(data => {
+            if (data.ok) {
+                window.location.reload();
+            }
+        }).catch(err => {
+            console.log(err);
+        });
+    }
     render() {
 
         return (
@@ -24,7 +41,7 @@ class Comment extends Component {
                     </div>
                 </div>
                 <div className="comment__footer">
-                    {this.props.value.isMyComment && <div className="comment__delete">DELETE</div>}
+                    {this.props.value.isMyComment && <div className="comment__delete" onClick={this.deleteComment}>DELETE</div>}
                     <div className="comment__time">{this.props.value.displayTime}</div>
                 </div>
             </section>

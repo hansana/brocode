@@ -93,8 +93,18 @@ class App extends Component {
                 <!-- ======================= --> */}
 
                 <Switch>
-                    <Route exact path="/" render={(props) => <RantList showMainLoader={this.showMainLoader}/>}/>
-                    <Route exact path="/rant/:rantId" component={RantDetail} />
+                    <Route exact path="/" render={() => <RantList 
+                        showMainLoader={this.showMainLoader} 
+                        showLogin={this.state.showLogin} 
+                        showHideLogin={this.showHideLogin}
+                        />}/>
+                    {<Route exact path="/rant/:rantId" location={this.props.location} render={({ location, match }) => <RantDetail 
+                        showMainLoader={this.showMainLoader}                         
+                        showLogin={this.state.showLogin} 
+                        params={match.params}
+                        showHideLogin={this.showHideLogin}
+                        />}/>}
+
                 </Switch>
         
             </div>
@@ -111,83 +121,8 @@ class App extends Component {
         <Login showLogin={this.state.showLogin} showHideLogin={this.showHideLogin}/>
         
         {/* <!-- ======================= -->
-        <!-- End of login popup -->
-        
-        <!-- Start of comment popup -->
-        <!-- ======================= --> */}
-        
-        {/* <!-- <div className="popup popup--open">
-        <div className="popup__header">
-            <div title="Close" className="close layout--center">
-                X
-            </div>
-        </div>
-        <div className="popup__body layout--center">
-            <div className="popup__body-inner">
-        
-                <div className="form">
-                    <div className="form__title">
-                        NEW <span className="highlight">#</span>COMMENT
-                    </div>
-                    <div className="form__description">
-                        Comment with 140 characters.
-                    </div>
-                    <form name="new-comment">
-                        <div className="new-comment">
-                            <textarea maxlength="140"></textarea>
-        
-                            <div className="loader">
-                                <div className="spinner"></div>
-                            </div>
-        
-                            <div className="form__error">
-                                Some fields are missing !
-                            </div>
-        
-                            <input type="submit" value="COMMENT"/>
-                        </div>
-                    </form>
-                </div>
-        
-            </div>
-        </div>
-        </div> --> */}
-        
-        {/* <!-- ======================= -->
-        <!-- End of comment popup -->
-        
-        <!-- Start of alert popup -->
-        <!-- ======================= --> */}
-        
-        {/* <!-- <div className="popup popup--open">
-        <div className="popup__header">
-            <div title="Close" className="close layout--center">
-                X
-            </div>
-        </div>
-        <div className="popup__body layout--center">
-            <div className="popup__body-inner">
-        
-                <div className="form">
-                    <div className="form__title">
-                        <span className="highlight">#</span>OOPS!
-                    </div>
-                    <div className="form__description">
-                        You can not vote on your own post :)
-                    </div>
-                    <form name="alert">
-                        <div className="alert">
-                            <input type="submit" value="OK" />
-                        </div>
-                    </form>
-                </div>
-        
-            </div>
-        </div>
-        </div> -->
-        
-        <!-- ======================= -->
-        <!-- End of alert popup --> */}
+        <!-- End of login popup --> */}        
+
             </div>
 
             </Router>
