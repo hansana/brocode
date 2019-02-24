@@ -49,8 +49,8 @@ class RantDetail extends Component {
 
     handleVote(event, myVote) {
         event.preventDefault();
-        this.props.showMainLoader(true);
-        if (LoginService.isLoggedIn()){
+        if (LoginService.isLoggedIn()){        
+            this.props.showMainLoader(true);
             VoteService.doVote(myVote, this.state, this.state.postDetials.post.id);
         } else {
             this.props.showHideLogin(true);
