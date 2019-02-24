@@ -28,14 +28,15 @@ class RantList extends Component {
     }
 
     componentDidMount() {
+        this.props.showMainLoader(true);
         AxiosService.devRantRequest({
             url: 'https://api.devrant.thusitha.site/v1/post.list',
             method:'get'
         }).then(data => {
-            this.props.showMainLoader(false);
             this.setState({
                 rantListDetails: data
             });
+            this.props.showMainLoader(false);
         }).catch(err => {
             console.log(err);
         });

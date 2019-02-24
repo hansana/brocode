@@ -18,7 +18,7 @@ export default class AvatarAlgorithm {
         }
 
         number = this.getMappedNumber(number, size);
-        console.log(number);
         return parseInt(number);
     }
+    
 }

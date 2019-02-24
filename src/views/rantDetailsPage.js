@@ -89,7 +89,7 @@ class RantDetail extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.params.rantId);
+        this.props.showMainLoader(true);
         AxiosService.devRantRequest({
             url: 'https://api.devrant.thusitha.site/v1/post.details',
             method:'get',
@@ -130,6 +130,11 @@ class RantDetail extends Component {
             }
         }
 
+        if (isLoading) {
+            return (
+                <div></div>
+            );
+        }
         return (
             <div className="rant-details layout--center">
 
