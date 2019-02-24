@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import LoginService from '../services/loginService.js';
-
+import CellGrid from './cellGrid.js';
 function Header(props) {
 
     const { isLogged, showHideLogin, signOut } = props;
@@ -18,9 +18,10 @@ function Header(props) {
                 {/* <!-- User Profile --> */}
                 <div className="profile layout--center">
                     <div className="profile__picture">
-                        <svg height="36" width="36">
+                        {/* <svg height="36" width="36">
                             <circle cx="18" cy="18" r="18" fill="#5c5f6f"></circle>
-                        </svg>
+                        </svg> */}
+                        <CellGrid username={username}/>
                     </div>
                     <div className="profile__name">{username}</div>
                 </div>

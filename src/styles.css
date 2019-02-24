@@ -655,3 +655,21 @@ html {
     transform: scale(1.02);
   }
 }
+
+.cell {
+    border: solid 1px #7e644f;
+    height: 8px;
+    width: 8px;
+    /* background: red; */
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.board-col {
+  display: inline-grid
+}
+
+.grid-container {
+  margin-top: -10px;
+  margin-right: -8px;
+}

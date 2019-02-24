@@ -97,6 +97,7 @@ class Login extends Component {
                 this.props.showHideLogin(false);
                 //hiding the loader
                 this.showHideLoader(false);
+                window.location.reload();
             }).catch(err => {
                 console.log(err);
             });
