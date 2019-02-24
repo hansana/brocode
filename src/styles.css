@@ -662,6 +662,7 @@ html {
     width: 8px;
     /* background: red; */
     display: inline-block;
+    border-radius: 5px;
 }
 
 .board-col {
