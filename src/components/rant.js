@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom';
 import AxiosService from '../services/axiosService.js';
 import LoginService from '../services/loginService.js';
+import VoteService from '../services/voteService.js';
 
 class Rant extends Component {
     constructor(props) {
@@ -15,33 +16,8 @@ class Rant extends Component {
 
     handleVote(event, myVote) {
         event.preventDefault();
-
         if (LoginService.isLoggedIn()){
-            let direction = myVote ? "up" : "down";
-            let temp = ((this.state.myUpVote != "") && myVote==true) || ((this.state.myDownVote != "") && myVote==false);
-            direction = temp ? "reset" : direction;
-
-            if (this.state.rantData !== "") {
-                AxiosService.devRantRequest({
-                    url: 'https://api.devrant.thusitha.site/v1/post.vote',
-                    method:'post',
-                    data: {
-                        postId: this.props.value.id,
-                        direction: direction
-                    }
-                }).then(data => {
-                    if (data.ok) {
-                        window.location.reload();
-                    }
-                }).catch(err => {
-                    console.log(err);
-                });
-            } else {
-                this.setState({
-                    isLoading: false,
-                    isFieldDataMissing: true
-                });
-            }
+            VoteService.doVote(myVote, this.state, this.props.value.id);
         } else {
             this.props.showHideLogin(true);
         }
