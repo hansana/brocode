@@ -14,7 +14,7 @@ class CellGrid extends React.Component {
     createRows(size, j) {
         let rows = [];
         for (let i=1; i<size+1; i++) {
-            rows.push(<Cell fillColor={ this.state.mappedNumber%(i+j)    } key={i}/>);
+            rows.push(<Cell  key={i} fillColor={ this.state.mappedNumber%(i+j)}/>);
         }
 
         return(

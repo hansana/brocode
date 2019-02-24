@@ -21,7 +21,7 @@ class Login extends Component {
         this.passwordInput = React.createRef();
     }
 
-    //Lfie cycle methods-----------------------
+    //Life cycle methods-----------------------
     componentDidUpdate() {
         //If both these are empty focus on username
         if (this.state.formData.password == '' && this.state.formData.username == '') {

@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import Comment from '../components/comment.js';
 import CommentPopUp from '../components/commentPopUp.js';
 import AxiosService from '../services/axiosService.js';
+import CellGrid from '../components/cellGrid.js';
 
 class RantDetail extends Component {
     constructor(props) {
@@ -92,9 +93,9 @@ class RantDetail extends Component {
                     <div className="post-hero__body">
                         <div className="profile">
                             <div className="profile__picture">
-                                <svg height="36" width="36">
-                                    <circle cx="18" cy="18" r="18" fill="#5c5f6f" />
-                                </svg>
+                                {postDetials.length != 0 && postDetials.post.author &&
+                                    <CellGrid username={postDetials.post.author}/>
+                                }
                             </div>
                             <div className="profile__name">
                                 {postDetials.length != 0 && postDetials.post.author}

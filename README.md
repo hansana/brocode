@@ -5,9 +5,9 @@ https://dev-rant.herokuapp.com/
 
 ### Installing
 
-git clone 'clone-url'
-cd brocode
-npm install
+git clone 'clone-url',
+cd brocode,
+npm install,
 npm start
 
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CellGrid from './cellGrid.js';
 
 class Comment extends Component {    
     render() {
@@ -9,9 +10,7 @@ class Comment extends Component {
                     <div className="comment__body">
                         <div className="profile">
                             <div className="profile__picture">
-                                <svg height="36" width="36">
-                                    <circle cx="18" cy="18" r="18" fill="#5c5f6f" />
-                                </svg>
+                                <CellGrid username={this.props.value.author}/>
                             </div>
                             <div className="profile__name">
                                 {this.props.value.author}
