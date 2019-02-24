@@ -1,38 +1,39 @@
 import React, { Component } from 'react';
 import Rant from '../components/rant.js';
+import PostPopUp from '../components/postPopUp.js';
 import AxiosService from '../services/axiosService.js';
 
 class RantList extends Component {
-    state = {
-        rantListDetails: [],
-        isLoading: true,
-        errors: null
-      };
+    constructor(props) {
+        super(props);
+        this.state = {
+            rantListDetails: [],
+            isLoading: true,
+            errors: null,
+            showAddPost: false
+        };
+
+        this.showPostAddPopUp = this.showPostAddPopUp.bind(this)
+    }
+    
+    showPostAddPopUp(show) {
+        this.setState({
+            showAddPost: show
+        });
+    }
 
     componentDidMount() {
-        AxiosService.getRequest({
+        AxiosService.devRantRequest({
             url: 'https://api.devrant.thusitha.site/v1/post.list',
             method:'get'
         }).then(data => {
+            this.props.showMainLoader(false);
             this.setState({
                 rantListDetails: data
             });
-            this.details = data;
         }).catch(err => {
             console.log(err);
         });
-
-
-        // axios.get('https://api.devrant.thusitha.site/v1/post.list')
-        // .then(response => {
-        //     this.setState({
-        //         rantListDetails: response.data
-        //     });
-        // })
-        // .catch(function (error) {
-        //     console.log(error);
-        // });
-
     }
 
     render() {
@@ -51,13 +52,16 @@ class RantList extends Component {
             }
         }
 
-
         return (
             <div className="post-list">
 
                 {rantArrayList}
 
-                <div className="rant__add" title="Add Rant">+</div>  
+                <div className="rant__add" title="Add Rant" onClick={() => this.showPostAddPopUp(true)}>
+                    +
+                </div>
+                
+                <PostPopUp showAddPost={this.state.showAddPost} showPostAddPopUp={this.showPostAddPopUp}/>
             </div>
         );
     }

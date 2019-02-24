@@ -10,7 +10,7 @@ var errros = {
 
 export default class AxiosService {
 
-  static getRequest(data) {
+  static devRantRequest(data) {
     return new Promise((resolve, reject) => {
 
     const token = LoginService.getToken();

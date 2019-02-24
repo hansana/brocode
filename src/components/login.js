@@ -88,7 +88,7 @@ class Login extends Component {
         const creds = {username, password}
 
         if (creds) {
-            AxiosService.getRequest({
+            AxiosService.devRantRequest({
                 url: 'https://api.devrant.thusitha.site/v1/user.activate',
                 method:'post',
                 data: creds
@@ -113,7 +113,6 @@ class Login extends Component {
             passwordRequired: false,
             usernameRequired: false
         })
-        console.log(this.state);
     }
 
     showHideLoader = (show) => {

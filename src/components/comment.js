@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-// import AxiosService from 'services/axiosService.js';
 
 class Comment extends Component {    
     render() {
-        // let posts = await AxiosService.getRequest('post.list');
 
         return (
             <section className="comment">
